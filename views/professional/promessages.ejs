@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<%- include("../header.ejs") %>
+
+<head>
+
+  <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
+  
+  <link href="/css/chat.css" rel="stylesheet">
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+
+  
+  </script>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/prodashboard">
+
+            <div class="sidebar-brand-text mx-3">Find A Professional</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item ">
+          <a class="nav-link" href="/prodashboard">
+              <i class="fas fa-fw fa-tachometer-alt"></i>
+              <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <li class="nav-item">
+          <a class="nav-link" href="/proprofile">
+              <i class="fa fa-user"></i>
+              <span>Professional Profile</span></a>
+      </li>
+      
+      <hr class="sidebar-divider d-none d-md-block">
+      <!-- Nav Item - Tables -->
+      <li class="nav-item active">
+          <a class="nav-link" href="/progress">
+              <i class="fas fa-fw fa-table"></i>
+              <span>Booking In Progress</span></a>
+      </li>
+      
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <li class="nav-item">
+          <a class="nav-link" href="/prohistory">
+              <i class="fas fa-fw fa-table"></i>
+              <span>History Services</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <!-- Topbar Navbar -->
+          
+          <ul class="navbar-nav ml-auto">
+            <!-- Nav Item - User Information -->
+            <button class="w3-button w3-hover-light-grey"><a href="/logout">Log out</a></button>
+          </ul>
+        </nav>
+        <!-- End of Topbar -->
+        <!-- start here! -->
+
+        <section class="msger" style="margin: auto;">
+          <header class="msger-header">
+            <div class="msger-header-title">
+              <i class="fas fa-comment-alt"></i> Chat
+            </div>
+            <div class="msger-header-options">
+              <span><i class="fas fa-cog"></i></span>
+            </div>
+          </header>
+
+          <main class="msger-chat">
+
+          </main>
+
+          <form class="msger-inputarea" >
+            <input type="hidden" name="booking" value="<%= booking %>">
+            <input type="hidden" id = "name" class="form-control" readonly placeholder="Name"  value="<%= pro.username %>">
+            <input type="hidden" name="pro" value="<%= pro._id %>">
+            <input id = "message" type="text" class="msger-input" placeholder="Enter your message...">
+            <button id="send" type="submit" class="msger-send-btn">Send</button>
+          </form>
+        </section>
+        <!-- End of Main Content -->
+      </div>
+      <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+  </div>
+  <!-- End of Main Content -->
+
+  </div>
+  <!-- End of Content Wrapper -->
+  </div>
+  <!-- End of Page Wrapper -->
+
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="/js/demo/datatables-demo.js"></script>
+
+  <script type="text/javascript" src="/js/mdb.min.js"></script>
+  
+  <!-- Custom scripts -->
+  <script>
+    $(document).ready(function (){
+      var socket = io('http://127.0.01:3000');
+
+      if(socket) {
+        socket.on('<%= booking %>', (data) => {
+          console.log('ada')
+        getLatestMessage()
+        })
+      }
+
+      $("#send").click((e) => {
+        e.preventDefault()
+
+        sendMessage({
+          booking: $("input[name=booking]").val(),
+          pro: $("input[name=pro]").val(),
+          message: $("#message").val()
+        });
+      })
+
+      getMessages()
+    })
+    // var socket = io();
+    // $(() => {
+    //   $("#send").click(() => {
+    //     sendMessage({
+    //       booking: $("input[name=booking]").val(),
+    //       pro: $("input[name=pro]").val(),
+    //       message: $("#message").val()
+    //     });
+    //   })
+    //   getMessages()
+    // })
+
+    
+//     socket.on('message', (data) => {
+//   addMessages(data)
+// }) 
+    
+
+    function addMessages(message) {
+      var masa = new Date(message.createdAt).toLocaleTimeString()
+      if(message.pro) {
+        if($("input[name=pro]").val() == message.pro._id) { 
+        html = '<div class="msg right-msg"><div class="msg-img" style="background-image: url('+message.pro.image +')"></div>'
+        html += '<div class="msg-bubble"><div class="msg-info"><div class="msg-info-name">' + message.pro.username + '</div><div class="msg-info-time">' + masa + '</div></div>'
+        }
+      }
+       else {
+        html = '<div class="msg left-msg"><div class="msg-img" style="background-image: url('+message.user.image +')"></div>'
+        html += '<div class="msg-bubble"><div class="msg-info"><div class="msg-info-name">' + message.user.username + '</div><div class="msg-info-time">' + masa + '</div></div>'
+      }
+      html += '<div class="msg-text">' + message.message + '</div></div></div>'
+      $(".msger-chat").append(html)
+    }
+
+    function getMessages() {
+      $.get('http://localhost:3000/promessageslist/<%= booking %>', (data) => {
+        data.forEach(addMessages);
+      })
+    }
+
+    function getLatestMessage() {
+      $.get('http://127.0.0.1:3000/lastmessage/<%=booking%>', (data) => {
+        addMessages(data[0])
+      })
+    }
+
+    function sendMessage(message) {
+      $.post('http://localhost:3000/promessages', message)
+      $("#message").val('')
+    }
+  </script>
+
+</body>
+
+</html>

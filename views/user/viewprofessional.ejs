@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<%- include("../header.ejs") %>
+
+
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/userdashboard">
+
+                <div class="sidebar-brand-text mx-3">Find A Professional</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/userdashboard">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">
+                    <i class="fa fa-user"></i>
+                    <span>User Profile</span></a>
+            </li>
+
+            <hr class="sidebar-divider">
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="/bookinprogress">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Booking In Progress</span></a>
+            </li>
+
+            <hr class="sidebar-divider">
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="/historybook">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>History Book Professional</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+
+
+        </ul>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <!-- Topbar Navbar -->
+                    
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Nav Item - User Information -->
+                        <button class="w3-button w3-hover-light-grey"><a href="/logout">Log out</a></button>
+                    </ul>
+                </nav>
+
+                <!--Main layout-->
+                <main>
+                    <div class="container py-5">
+                        <!--Section: Products v.3-->
+                        <section class="text-center mb-4">
+                            <h4 class="text-center mb-5"><strong>Professional List</strong></h4>
+                        </section>
+
+                        <% var a = 0;  %>
+                        <% while ( a < data.length ) { %>
+                        <div class="row  ">
+                            <% for (var i=0; i < 5 ; i++) {%>
+                            <% if (a < data.length )  {%>
+                            <div class="col-sm col-lg-4 col-md-4 mb-4">
+                                <a href="/professionaldetail/<%= data[i].id %>">
+                                <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
+                                    
+                                    <img src="<%= data[i].image %>" class="card-img-top" alt="">
+                                    <div class="mask col-sm " style="background-color: rgba(0, 0, 0, 0.089);">
+                                        <p class="badge bg-light pt-2 ms-3 mt-3 text-dark text-uppercase">
+                                            <%= data[i].username %></p>
+                                    </div>
+                                   
+                                </div>
+                            </a>
+
+                            </div>
+                            <% a++; %>
+                            <% } %>
+                            <% } %>
+
+                        </div>
+                        <% } %>
+
+                    </div>
+                </main>
+                <!--Main layout-->
+
+
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="js/demo/datatables-demo.js"></script>
+
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <!-- Custom scripts -->
+        <script type="text/javascript"></script>
+        
+
+</body>
+
+</html>
