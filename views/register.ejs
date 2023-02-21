@@ -12,13 +12,13 @@
     <title>Register User</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -51,6 +51,76 @@
                                 <div class="form-group ">
                                     <input type="password"name="passwordConf" class="form-control form-control-user" placeholder="Password Confirmation">
                                 </div>
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
+                                    <label class="form-check-label" for="terms">I accept the <a href="#" data-toggle="modal" data-target="#termsModal">Terms and Conditions</a></label>
+                                </div>
+
+                                 <!-- The Modal -->
+                            <div class="modal" id="termsModal" style="display:none;">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                              
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                      <h4 class="modal-title">Terms and Conditions</h4>
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                              
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                      <p align="justify">
+                                          Terms and Conditions
+                                          <br>
+                                          <br>
+                                          1. Introduction
+                                          <br>
+                                          &nbsp;&nbsp;&nbsp;&nbsp; By registering through our system, you agree to the following terms and conditions.
+                                          <br>
+                                          <br>
+                                          2. Eligibility
+                                          <br>
+                                          &nbsp;&nbsp;&nbsp;&nbsp; You must provide accurate and complete information when registering. You must meet the criteria set by the
+                                          organizer to be eligible to participate in the event or program.
+                                          <br>
+                                          <br>
+                                          3. Liability
+                                          <br>
+                                          &nbsp;&nbsp;&nbsp;&nbsp; You agree to participate in the event or program at your own risk. The organizers shall not be held liable for
+                                          any injury or damage incurred during participation.
+                                          <br>
+                                          <br>
+                                          4. Code of Conduct
+                                          <br>
+                                          &nbsp;&nbsp;&nbsp;&nbsp; You agree to adhere to the code of conduct set by the organizers, which includes but is not limited to: respect
+                                          for other participants, no use of illegal substances, and no discrimination.
+                                          <br>
+                                          <br>
+                                          5. Changes to the Terms and Conditions
+                                          <br>
+                                          &nbsp;&nbsp;&nbsp;&nbsp; The organizers reserve the right to change the terms and conditions at any time. You are responsible for staying
+                                          informed of any changes.
+                                          <br>
+                                          <br>
+                                          6. Governing Law
+                                          <br>
+                                          &nbsp;&nbsp;&nbsp;&nbsp; These terms and conditions shall be governed and construed in accordance with the laws of the country in which
+                                          the event or program is being held.
+                                          <br>
+                                          <br>
+                                          By registering, you confirm that you have read and agree to the above terms and conditions.
+                                      </p>
+                                    </div>
+                              
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                              
+                                  </div>
+                                </div>
+                              </div>
+
                                 <!-- <a href="login.html" class="btn btn-primary btn-user btn-block">Register Account</a> -->
                                 <input type="submit" value="Register" id="aa" class="btn btn-primary btn-user btn-block">
                                 <hr>
@@ -70,14 +140,14 @@
     
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="/js/sb-admin-2.min.js"></script>
 
 </body>
 

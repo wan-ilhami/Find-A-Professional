@@ -72,7 +72,7 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #ffffff;
+    color: #000;
     text-align: left;
     background-color: #fff
 }
@@ -183,12 +183,12 @@ a:hover {
 }
 
 a:not([href]):not([class]) {
-    color: inherit;
+    color: #000;
     text-decoration: none
 }
 
 a:not([href]):not([class]):hover {
-    color: inherit;
+    color: #000;
     text-decoration: none
 }
 
