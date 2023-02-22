@@ -152,7 +152,10 @@
   <!-- Custom scripts -->
   <script>
     $(document).ready(function (){
-      var socket = io('http://127.0.01:3000');
+      
+       const socket = io("http://127.0.01:3000",{
+         transports: ['websocket'],
+        });
 
       if(socket) {
         socket.on('<%= booking %>', (data) => {
