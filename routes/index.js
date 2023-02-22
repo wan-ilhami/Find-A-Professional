@@ -725,7 +725,7 @@ router.post('/book', (req, res) => {
 						  This is the booking for your session.
 						  <p>
 						  Below is your booking details:
-						  
+						  <br>
 						  Date Booking:
 						  ${req.body.date}
 						  <br>

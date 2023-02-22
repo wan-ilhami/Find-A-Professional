@@ -120,7 +120,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Booking ID</th>
+                                            <th>Booking Category</th>
                                             <th>User</th>
                                             <th>Professional</th>
                                             <th>Date</th>
@@ -134,7 +134,7 @@
                                         <% for(var i = 0; i < bookings.length; i++) { %>
                                             <tr>
                                                 <td><%= i + 1 %></td>
-                                                <td><%= bookings[i].id %></td>
+                                                <td><%= bookings[i].categoryname %></td>
                                                 <td><%= bookings[i].userid.username %></td>
                                                 <td><%= bookings[i].proid.username %></td>
                                                 <td><%= bookings[i].date %></td>
