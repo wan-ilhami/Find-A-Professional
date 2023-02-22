@@ -168,7 +168,7 @@
   <!-- Custom scripts -->
   <script>
     $(document).ready(function (){
-      const socket = io("http://127.0.01:3000",{
+      const socket = io("https://findapro.nooraiman.xyz/",{
          transports: ['websocket'],
         });
 
@@ -226,19 +226,19 @@
     }
 
     function getMessages() {
-      $.get('http://localhost:3000/promessageslist/<%= booking %>', (data) => {
+      $.get('https://findapro.nooraiman.xyz//promessageslist/<%= booking %>', (data) => {
         data.forEach(addMessages);
       })
     }
 
     function getLatestMessage() {
-      $.get('http://127.0.0.1:3000/lastmessage/<%=booking%>', (data) => {
+      $.get('https://findapro.nooraiman.xyz//lastmessage/<%=booking%>', (data) => {
         addMessages(data[0])
       })
     }
 
     function sendMessage(message) {
-      $.post('http://localhost:3000/promessages', message)
+      $.post('https://findapro.nooraiman.xyz//promessages', message)
       $("#message").val('')
     }
   </script>

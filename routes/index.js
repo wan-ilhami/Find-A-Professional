@@ -10,13 +10,13 @@ var nodemailer = require('nodemailer');
 var Message = require("../models/chat");
 
 var transport = nodemailer.createTransport({
-	host: "smtp.mailtrap.io",
+	host: "sandbox.smtp.mailtrap.io",
 	port: 2525,
 	auth: {
-		user: "4fe75114b6aca8",
-		pass: "4ae71608c6a8ab"
+	  user: "4fe75114b6aca8",
+	  pass: "4ae71608c6a8ab"
 	}
-});
+  });
 
 // Upload Imges
 const crypto = require('crypto');
@@ -725,10 +725,7 @@ router.post('/book', (req, res) => {
 						  This is the booking for your session.
 						  <p>
 						  Below is your booking details:
-						  <p>
-						  Your Court:
-						  ${req.body.date}
-						  <br>
+						  
 						  Date Booking:
 						  ${req.body.date}
 						  <br>
@@ -749,7 +746,7 @@ router.post('/book', (req, res) => {
 							  </strong>
 							  <p>
 		
-								  Your email: ${data.email} <br>
+								Your email: ${data.email} <br>
 								  
 							  </p>
 							</div>

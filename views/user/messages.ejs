@@ -153,7 +153,7 @@
   <script>
     $(document).ready(function (){
       
-       const socket = io("http://127.0.01:3000",{
+       const socket = io("https://findapro.nooraiman.xyz/",{
          transports: ['websocket'],
         });
 
@@ -213,19 +213,19 @@
     }
 
     function getMessages() {
-      $.get('http://127.0.0.1:3000/messageslist/<%=booking%>', (data) => {
+      $.get('https://findapro.nooraiman.xyz//messageslist/<%=booking%>', (data) => {
         data.forEach(addMessages);
       })
     }
 
     function getLatestMessage() {
-      $.get('http://127.0.0.1:3000/lastmessage/<%=booking%>', (data) => {
+      $.get('https://findapro.nooraiman.xyz//lastmessage/<%=booking%>', (data) => {
         addMessages(data[0])
       })
     }
 
     function sendMessage(message) {
-      $.post('http://127.0.0.1:3000/messages', message)
+      $.post('https://findapro.nooraiman.xyz//messages', message)
       $("#message").val('')
     }
     
